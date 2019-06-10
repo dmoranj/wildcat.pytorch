@@ -10,4 +10,4 @@ RUN apt-get update && apt-get -y install python3 python3-pip git vim && \
     ./setup.sh
 
 
-ENTRYPOINT /bin/bash
+ENTRYPOINT /root/execute.sh
