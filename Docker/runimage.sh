@@ -7,4 +7,4 @@ if [ "$#" -ne 2 ]; then
 fi
 
 cd ..
-docker run --runtime=nvidia -it -e NVIDIA_VISIBLE_DEVICES=$1 --mount type=bind,source=$2,target=/data --rm wildcat
+docker run --runtime=nvidia -d -e NVIDIA_VISIBLE_DEVICES=$1 --mount type=bind,source=$2,target=/data --rm wildcat
