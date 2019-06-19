@@ -6,5 +6,8 @@ if [ "$#" -ne 2 ]; then
     exit 1
 fi
 
+BATCH=16
+EPOCHS=20
+
 cd ..
-docker run --runtime=nvidia -d -e NVIDIA_VISIBLE_DEVICES=$1 --mount type=bind,source=$2,target=/data --rm wildcat
+docker run --ipc=host --runtime=nvidia -d -e NVIDIA_VISIBLE_DEVICES=$1 -e BATCH=$BATCH -e EPOCHS=$EPOCHS --mount type=bind,source=$2,target=/data --rm wildcat_dmoranj

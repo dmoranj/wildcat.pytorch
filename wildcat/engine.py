@@ -189,6 +189,8 @@ class Engine(object):
 
             if self.state['multi_gpu']:
                 model = torch.nn.DataParallel(model, device_ids=self.state['device_ids']).cuda()
+            elif 'NVIDIA_VISIBLE_DEVICES' in os.environ:
+                model = torch.nn.DataParallel(model, device_ids=[int(os.environ['NVIDIA_VISIBLE_DEVICES'])]).cuda()
             else:
                 model = torch.nn.DataParallel(model).cuda()
 
